@@ -21,4 +21,6 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+**/pulumi
+**/eu-captcha-cdk
 README.md

@@ -22,7 +22,7 @@ const redisCache = new awsx.ecs.FargateService('eu-captcha-cache', {
       },
     },
   },
-  assignPublicIp: true,
+  assignPublicIp: false,
 });
 
 const redisEndpoint = redisListener.endpoint;
@@ -36,7 +36,7 @@ const euCaptcha = new awsx.ecs.FargateService('eu-captcha-frontend', {
   taskDefinitionArgs: {
     containers: {
       euCaptchaFrontend: {
-        image: awsx.ecs.Image.fromPath('eu-captcha-frontend', './'),
+        image: awsx.ecs.Image.fromPath('eu-captcha-frontend', '../'),
         memory: 512,
         portMappings: [euCaptchaListener],
         environment: redisEndpoint.apply((e) => [
@@ -47,7 +47,7 @@ const euCaptcha = new awsx.ecs.FargateService('eu-captcha-frontend', {
       },
     },
   },
-  assignPublicIp: true,
+  assignPublicIp: false,
 });
 
 export let euCaptchaURL = euCaptchaListener.endpoint;

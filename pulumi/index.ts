@@ -11,9 +11,9 @@ const euCaptcha = new awsx.ecs.FargateService('eu-captcha-frontend', {
   taskDefinitionArgs: {
     containers: {
       euCaptchaFrontend: {
-        image: awsx.ecs.Image.fromPath('eu-captcha-frontend', './'),
-        memory: 1024,
-        cpu: 512,
+        image: awsx.ecs.Image.fromPath('eu-captcha-frontend', '../'),
+        // memory: 1024,
+        // cpu: 512,
       },
     },
   },
