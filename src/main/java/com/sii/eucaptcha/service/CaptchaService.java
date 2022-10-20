@@ -3,7 +3,6 @@ package com.sii.eucaptcha.service;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -36,7 +35,6 @@ import com.sii.eucaptcha.exceptions.WrongCaptchaRotationDegree;
 import com.sii.eucaptcha.security.CaptchaRandom;
 import com.sii.eucaptcha.service.whatsup.CaptchaWhatsUpImagesService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.Resource;
@@ -268,9 +266,8 @@ public class CaptchaService {
         String captchaPngImage = "";
         WhatsUpCaptchaResultDtoDto captchaDataResult = new WhatsUpCaptchaResultDtoDto();
         try {
-            File file = resource.getFile();
-            byte[] fileContent = FileUtils.readFileToByteArray(file);
-            BufferedImage buffImg = ImageIO.read(file);
+            InputStream is = resource.getInputStream();
+            BufferedImage buffImg = ImageIO.read(is);
 
             BufferedImage rotatedImage = captchaWhatsUpImagesService.rotate(buffImg, rotationAngle);
 

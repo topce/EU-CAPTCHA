@@ -22,7 +22,7 @@ $(function () {
   function getWhatsUpcaptcha() {
     const getCaptchaUrl = $.ajax({
       type: 'GET',
-      url: 'api/captchaImg?captchaType=WHATS_UP&locale=' + getLanguage(),
+      url: ctx + '/api/captchaImg?captchaType=WHATS_UP&locale=' + getLanguage(),
       success: function (jsonData) {
         EuCaptchaToken = getCaptchaUrl.getResponseHeader('x-jwtString');
         $('#captchaImage').attr(
@@ -39,7 +39,8 @@ $(function () {
     const reloadCaptchaUrl = $.ajax({
       type: 'GET',
       url:
-        'api/reloadCaptchaImg/' +
+        ctx +
+        '/api/reloadCaptchaImg/' +
         $('#captchaImage').attr('captchaId') +
         '?captchaType=WHATS_UP&locale=' +
         getLanguage(),
@@ -62,8 +63,8 @@ $(function () {
 
   function validateCaptcha() {
     const validateCaptcha = $.ajax({
-      type:"POST",
-      url: 'api/validateCaptcha/' + $('#captchaImage').attr('captchaId'),
+      type: 'POST',
+      url: ctx + '/api/validateCaptcha/' + $('#captchaImage').attr('captchaId'),
       beforeSend: function (xhr) {
         xhr.setRequestHeader('Accept', 'application/json');
         xhr.setRequestHeader(

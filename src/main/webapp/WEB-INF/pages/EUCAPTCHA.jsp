@@ -8,23 +8,23 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
   <link rel="shortcut icon" href="#" />
-  <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/eu-captcha-style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/eu-captcha-style.css">
 
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <script src="js/restCaptcha.js"></script>
+  <script>var ctx = "${pageContext.request.contextPath}"</script>
+  <script src="${pageContext.request.contextPath}/js/restCaptcha.js"></script>
 
   <title>EU Captcha</title>
 </head>
 <body dir="rtl " onload="getLastSelectedValue()">
 <div>
   <ul id="navigation" >
-    <button class="btn btn-lg btn-primary" id="textual" onclick="location.href ='./'">Textual Captcha</button>
-    <button class="btn btn-lg btn-primary" id="rotate" onclick="location.href ='./rotate'">Rotational Captcha</button>
+    <button class="btn btn-lg btn-primary" id="textual" onclick="location.href ='${pageContext.request.contextPath}/'">Textual Captcha</button>
+    <button class="btn btn-lg btn-primary" id="rotate" onclick="location.href ='${pageContext.request.contextPath}/rotate'">Rotational Captcha</button>
   </ul>
 </div>
   <div class="container ">

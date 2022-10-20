@@ -43,7 +43,8 @@ function getcaptcha() {
   const getCaptchaUrl = $.ajax({
     type: 'GET',
     url:
-      'api/captchaImg?locale=' +
+      ctx +
+      '/api/captchaImg?locale=' +
       getLanguage() +
       '&captchaLength=' +
       getCaptchaLength(window.location.search) +
@@ -68,7 +69,8 @@ $(function () {
     const reloadCaptchaUrl = $.ajax({
       type: 'GET',
       url:
-        'api/reloadCaptchaImg/' +
+        ctx +
+        '/api/reloadCaptchaImg/' +
         $('#captchaImg').attr('captchaId') +
         '/?locale=' +
         sessionStorage.getItem('language') +
@@ -100,7 +102,7 @@ $(function () {
   function validateCaptcha() {
     const validateCaptcha = $.ajax({
       type: 'POST',
-      url: 'api/validateCaptcha/' + $('#captchaImg').attr('captchaId'),
+      url: ctx + '/api/validateCaptcha/' + $('#captchaImg').attr('captchaId'),
       beforeSend: function (xhr) {
         xhr.setRequestHeader('Accept', 'application/json');
         xhr.setRequestHeader(
